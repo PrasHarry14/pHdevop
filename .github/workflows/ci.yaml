@@ -71,7 +71,7 @@ jobs:
           tags: sdo-expo:1.0
 
       # TASK 1.2: Add a step to run and verify the container.
-          - name: Run and verify Docker container
+      - name: Run and verify Docker container
         run: |
           output=$(docker run --rm sdo-expo:1.0 2 10)
           echo "$output"
