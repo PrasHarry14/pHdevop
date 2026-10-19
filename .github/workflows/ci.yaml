@@ -54,8 +54,7 @@ jobs:
   # ============================================================
 
   task1-docker-build:
-    # TASK 1.2: Add the required job dependency here.
-
+    needs: task1-test
     runs-on: ubuntu-latest
 
     steps:
@@ -72,6 +71,11 @@ jobs:
           tags: sdo-expo:1.0
 
       # TASK 1.2: Add a step to run and verify the container.
+          - name: Run and verify Docker container
+        run: |
+          output=$(docker run --rm sdo-expo:1.0 2 10)
+          echo "$output"
+          test "$output" = "2 ^ 10 = 1024"
 
       # ========================================================
       # TASK 1.3 — KUBERNETES: FOLLOW THE EVIDENCE
